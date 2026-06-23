@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1322"/>
+      <stop offset="1" stop-color="#06090f"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0.82" cy="0.1" r="0.7">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0.05" cy="0.95" r="0.6">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+
+  <!-- lock badge -->
+  <g transform="translate(150 250)">
+    <rect x="-44" y="-44" width="208" height="208" rx="48" fill="#0e1726" stroke="#1e2740" stroke-width="2"/>
+    <path d="M16 44v-20a44 44 0 0 1 88 0v20" fill="none" stroke="url(#lock)" stroke-width="17" stroke-linecap="round"/>
+    <rect x="2" y="42" width="116" height="92" rx="20" fill="url(#lock)"/>
+    <circle cx="60" cy="82" r="14" fill="#06222a"/>
+    <rect x="54" y="90" width="12" height="26" rx="6" fill="#06222a"/>
+  </g>
+
+  <!-- title + tagline -->
+  <text x="380" y="250" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="800" fill="#eef9fc">VaultMind</text>
+  <text x="384" y="312" font-family="Helvetica, Arial, sans-serif" font-size="36" font-weight="500" fill="#9fb3c8">Private document AI on 0G</text>
+
+  <!-- feature chips -->
+  <g font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="600">
+    <g transform="translate(384 358)">
+      <rect width="452" height="48" rx="24" fill="#0e1726" stroke="#22d3ee" stroke-opacity="0.4"/>
+      <text x="28" y="31" fill="#bfeefb">🔒 Encrypted in your browser</text>
+    </g>
+    <g transform="translate(384 422)">
+      <rect width="212" height="48" rx="24" fill="#0e1726" stroke="#34d399" stroke-opacity="0.4"/>
+      <text x="26" y="31" fill="#c7f3e2">📦 0G Storage</text>
+    </g>
+    <g transform="translate(612 422)">
+      <rect width="300" height="48" rx="24" fill="#0e1726" stroke="#22d3ee" stroke-opacity="0.4"/>
+      <text x="26" y="31" fill="#bfeefb">🛡️ 0G Compute (TEE)</text>
+    </g>
+  </g>
+
+  <!-- badge -->
+  <g transform="translate(940 70)">
+    <rect width="200" height="44" rx="22" fill="#22d3ee"/>
+    <text x="100" y="29" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#04222a">Zero Cup 2026</text>
+  </g>
+</svg>
