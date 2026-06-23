@@ -12,5 +12,6 @@ coverage
 .playwright-mcp
 *.png
 !src/**/*.png
+!public/*.png
 # local dev ciphertext store (used when 0G Storage is not configured)
 .vault-store
