@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     if (isRouterReal()) {
       const client = new OpenAI({ baseURL: OG.routerBase, apiKey: OG.routerKey });
-      const res = await client.chat.completions.create({
+      const res: any = await client.chat.completions.create({
         model: OG.routerModel,
         messages: [
           { role: "system", content: String(system || "") },
@@ -27,10 +27,11 @@ export async function POST(req: NextRequest) {
         ],
         temperature: 0.2,
       });
-      const answer = res.choices[0]?.message?.content?.trim() || "…";
+      const answer = res.choices?.[0]?.message?.content?.trim() || "…";
+      const provider = res?.x_0g_trace?.provider as string | undefined; // 0G compute provider that served it
       return NextResponse.json({
         answer,
-        meta: { mode: "router", level: "infra", model: OG.routerModel, network: OG.network },
+        meta: { mode: "router", level: "infra", model: res?.model || OG.routerModel, network: OG.network, provider },
       });
     }
 

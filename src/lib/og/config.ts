@@ -6,7 +6,7 @@ export const OG = {
   operatorKey: process.env.OPERATOR_PRIVATE_KEY || "",
   routerKey: process.env.ZG_ROUTER_API_KEY || "",
   routerBase: process.env.ZG_ROUTER_BASE_URL || "https://router-api-testnet.integratenetwork.work/v1",
-  routerModel: process.env.ZG_ROUTER_MODEL || "zai-org/GLM-5-FP8",
+  routerModel: process.env.ZG_ROUTER_MODEL || "qwen2.5-omni",
 };
 
 export const isStorageReal = () => Boolean(OG.operatorKey);

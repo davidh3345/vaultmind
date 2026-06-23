@@ -7,6 +7,7 @@ export interface AskMeta {
   level: "infra" | "per-response";
   model: string;
   network: string;
+  provider?: string; // 0G compute provider address that served the request
 }
 
 export async function ask(system: string, user: string): Promise<{ answer: string; meta: AskMeta }> {
@@ -34,6 +35,8 @@ export function buildReceipt(meta: AskMeta): Attestation {
     level: meta.level,
     verified: false, // group stage: infrastructure-level, not a per-response proof
     model: meta.model,
+    providerAddress: meta.provider,
+    links: meta.provider ? { providerAttestation: `https://chainscan-galileo.0g.ai/address/${meta.provider}` } : undefined,
     receiptHash,
   };
 }

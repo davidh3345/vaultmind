@@ -67,17 +67,36 @@ async function ogGet(ref: string): Promise<Buffer> {
   }
 }
 
-/** Store ciphertext, return a ref. Tries real 0G; falls back to local dev. */
+/** Is the optional 0G Storage SDK actually installed? (cached) */
+let sdkCache: boolean | null = null;
+export async function sdkAvailable(): Promise<boolean> {
+  if (sdkCache !== null) return sdkCache;
+  try {
+    await import("@0gfoundation/0g-storage-ts-sdk");
+    sdkCache = true;
+  } catch {
+    sdkCache = false;
+  }
+  return sdkCache;
+}
+
+/** True only when real 0G Storage is fully ready (operator key + SDK installed). */
+export async function storageRealReady(): Promise<boolean> {
+  return isStorageReal() && (await sdkAvailable());
+}
+
+/** Store ciphertext, return a ref. Uses real 0G when ready; else local dev store. */
 export async function putBlob(b64: string): Promise<{ ref: string; backend: "0g" | "local" }> {
   const bytes = Buffer.from(b64, "base64");
-  if (isStorageReal()) {
+  if (await storageRealReady()) {
+    // Real attempt: surface on-chain failures (e.g. unfunded wallet) clearly.
     try {
       return { ref: await ogPut(bytes), backend: "0g" };
     } catch (e) {
-      // Surface the failure rather than silently faking 0G.
       throw new Error(`0G Storage upload failed: ${(e as Error).message}`);
     }
   }
+  // Not fully configured yet → local ciphertext store so the app stays usable.
   return { ref: await localPut(bytes), backend: "local" };
 }
 

@@ -28,6 +28,12 @@ export default function ReceiptCard({ att }: { att: Attestation }) {
             <span className="text-right text-slate-300">{att.model}</span>
           </>
         )}
+        {att.providerAddress && (
+          <>
+            <span>0G provider</span>
+            <span className="mono truncate text-right text-slate-300">{att.providerAddress}</span>
+          </>
+        )}
         {att.signer && (
           <>
             <span>TEE signer</span>
