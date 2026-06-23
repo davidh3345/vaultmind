@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+dist
+.env
+.env.local
+.env*.local
+.DS_Store
+*.log
+.vercel
+coverage
+.playwright-mcp
+*.png
+!src/**/*.png
+# local dev ciphertext store (used when 0G Storage is not configured)
+.vault-store
